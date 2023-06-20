@@ -53,7 +53,7 @@ function main() {
         then
             DEB_PATH=$(awk '/^Filename:\s.*element-nightly_[0-9]+_amd64.deb/{print $2}' Packages)
             VERSION=$(echo "$DEB_PATH" | awk -F _ '{print $2}')
-            if pacman -Qi $PACKAGE_NAME | grep "$VERSION" > /dev/null
+            if pacman -Qi $PACKAGE_NAME 2>&1 | grep "$VERSION" > /dev/null
             then
                 echo "Package $PACKAGE_NAME version $VERSION already up to date, exiting"
                 rm -r "$WD"
