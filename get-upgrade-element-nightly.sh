@@ -64,7 +64,7 @@ function main() {
             makepkg --nobuild
             DEB_FILENAME=$(basename $DEB_PATH)
             DEB_HASH=$(sha256sum "$DEB_FILENAME" | awk '{print $1}')
-            if grep "$DEB_HASH" Packages
+            if grep "$DEB_HASH" Packages &> /dev/null
             then
                 makepkg -i
                 rm -r "$WD"
