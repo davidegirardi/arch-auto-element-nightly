@@ -60,8 +60,6 @@ function main() {
                 return 0
             fi
             renderPKGBUILD "$DEB_PATH" "$VERSION"
-            # Download the .deb file
-            makepkg --nobuild
             DEB_FILENAME=$(basename $DEB_PATH)
             DEB_HASH=$(sha256sum "$DEB_FILENAME" | awk '{print $1}')
             if grep "$DEB_HASH" Packages &> /dev/null
